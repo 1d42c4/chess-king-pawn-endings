@@ -1,0 +1,416 @@
+{
+  "number": 9,
+  "slug": "chess-king-pawn-endings",
+  "title": "King and Pawn Decisions",
+  "goal": "Use key squares and opposition, then check the special case of a rook pawn.",
+  "lessons": [
+    {
+      "id": "09.1",
+      "title": "Reach a key square before pushing",
+      "idea": "In a king-and-pawn ending, king placement can be more valuable than a pawn tempo. Key squares tell you where the king needs to stand to force promotion against correct defense.",
+      "facts": [
+        "For this white e3-pawn, the key squares are d5, e5 and f5.",
+        "Kf5 reaches a key square because Black's king on d6 does not attack f5.",
+        "The pawn is still on e3; pushing it changes the key-square problem."
+      ],
+      "explain": [
+        "Kf5 reaches a winning king position. After the sample ...Ke7, Ke5 keeps the king in front of the pawn and takes the opposition. The exact starting position and this continuation are tablebase wins for White.",
+        "Do not immediately play e4 after ...Ke7. That move uses a pawn tempo before the king has secured the next stage; Black can hold the resulting position. The king must continue doing the work instead of assuming that reaching one key square makes every later pawn push safe."
+      ],
+      "caution": "For an ordinary pawn on its second, third or fourth rank, the three key squares are two ranks ahead on its file and adjacent files. Rook pawns are a special case, and advanced pawns use different key squares. Do not apply this limited rule everywhere.",
+      "questions": [
+        "Which black king move in the setup has changed White's access to f5 and d5?",
+        "Can White force a win from this exact position?",
+        "Follow Kd4 ...Kd6 e4 ...Ke6. What has Black maintained?"
+      ],
+      "answers": [
+        "Black's king is now on e6. It controls d5, e5 and f5, so White cannot move directly onto any of the e3-pawn's key squares.",
+        "No. With White to move this is a tablebase draw against correct defense. White can still try, but a plan must not promise a forced promotion that the position does not contain.",
+        "Black stays in front of the pawn and responds to White's king and pawn moves without allowing penetration. The sample line remains drawn at every step. The exercise tests recognition of a defensive resource, not the search for a nonexistent winning move."
+      ],
+      "transfer": "Play both starting positions against a tablebase. Before each pawn push, stop and predict whether the result stays a win or draw; then check the answer.",
+      "recall": [
+        "Why can an early pawn push spoil a won king-and-pawn ending?",
+        "It can spend a needed tempo and move the key squares before the king secures the next stage."
+      ],
+      "positions": {
+        "A": {
+          "fen": "8/8/3k4/8/4K3/4P3/8/8 w - - 0 1",
+          "opening_moves": "",
+          "line": "Kf5 Ke7 Ke5",
+          "alternative": "Kf5 Ke7 e4",
+          "purpose": "endgame",
+          "validation": {
+            "id": "09.1A",
+            "title": "Reach a key square before pushing",
+            "fen": "8/8/3k4/8/4K3/4P3/8/8 w - - 0 1",
+            "line": "Kf5 Ke7 Ke5",
+            "bad": "Kf5 Ke7 e4",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Kd4",
+                "score": "+699",
+                "depth": 18
+              },
+              {
+                "san": "Kf5",
+                "score": "+699",
+                "depth": 18
+              },
+              {
+                "san": "Kf4",
+                "score": "+699",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "+697",
+            "tablebase": "win",
+            "tablebase_line": [
+              [
+                "Kf5",
+                "win"
+              ],
+              [
+                "Ke7",
+                "win"
+              ],
+              [
+                "Ke5",
+                "win"
+              ]
+            ]
+          }
+        },
+        "B": {
+          "fen": "8/8/4k3/8/4K3/4P3/8/8 w - - 0 1",
+          "opening_moves": "",
+          "line": "Kd4 Kd6 e4 Ke6",
+          "alternative": "",
+          "purpose": "endgame",
+          "validation": {
+            "id": "09.1B",
+            "title": "Reach a key square before pushing",
+            "fen": "8/8/4k3/8/4K3/4P3/8/8 w - - 0 1",
+            "line": "Kd4 Kd6 e4 Ke6",
+            "bad": "",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Kd4",
+                "score": "0",
+                "depth": 18
+              },
+              {
+                "san": "Kf4",
+                "score": "0",
+                "depth": 18
+              },
+              {
+                "san": "Kd3",
+                "score": "0",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "0",
+            "tablebase": "draw",
+            "tablebase_line": [
+              [
+                "Kd4",
+                "draw"
+              ],
+              [
+                "Kd6",
+                "draw"
+              ],
+              [
+                "e4",
+                "draw"
+              ],
+              [
+                "Ke6",
+                "draw"
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "09.2",
+      "title": "The side to move changes the result",
+      "idea": "Opposition is a way to control access, not a magic label. With kings facing each other one square apart, the player forced to move may have to yield a route around the other king.",
+      "facts": [
+        "The kings stand on d4 and d6, separated by d5.",
+        "It is Black to move in Model A.",
+        "White's d3-pawn is still behind its king, leaving the king room to advance."
+      ],
+      "explain": [
+        "Black must yield ground. After ...Kc6, Ke5 reaches a key square for the d3-pawn. Following ...Kd7, Kd5 keeps the king in front and preserves the win.",
+        "Do not replace Kd5 with an automatic d4 push. In that exact position, d4 gives up the win and allows a draw. Opposition helps the king gain access; you still have to choose moves that keep the access useful as the pawn advances."
+      ],
+      "caution": "A pawn move can alter who must move the king next. Count available pawn tempi and the actual key squares; having \"the opposition\" is not a substitute for calculating the resulting position.",
+      "questions": [
+        "What is the only change from Model A?",
+        "State the correct result with best play.",
+        "After Kc4, how does ...Kc6 help Black, and what is the sample continuation?"
+      ],
+      "answers": [
+        "The pieces occupy exactly the same squares, but White moves first. The side-to-move label is part of the position, not a minor caption.",
+        "This version is a draw. In Model A, Black to move loses; here White must move away from the favorable king opposition and cannot force penetration.",
+        "...Kc6 keeps Black in front of White's king. After d4, ...Kd6 holds the blockading relationship. The listed line stays drawn. Learn the route and the move order instead of memorizing a picture without its turn."
+      ],
+      "transfer": "Set up the same diagram twice and alternate who moves first. Predict the result before checking a tablebase, then explain the route the attacker gains or loses.",
+      "recall": [
+        "Can changing only the side to move change a pawn ending from win to draw?",
+        "Yes. It can force the wrong king to yield a key route or consume a vital tempo."
+      ],
+      "positions": {
+        "A": {
+          "fen": "8/8/3k4/8/3K4/3P4/8/8 b - - 0 1",
+          "opening_moves": "",
+          "line": "Kc6 Ke5 Kd7 Kd5",
+          "alternative": "Kc6 Ke5 Kd7 d4",
+          "purpose": "endgame",
+          "validation": {
+            "id": "09.2A",
+            "title": "The side to move changes the result",
+            "fen": "8/8/3k4/8/3K4/3P4/8/8 b - - 0 1",
+            "line": "Kc6 Ke5 Kd7 Kd5",
+            "bad": "Kc6 Ke5 Kd7 d4",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Ke7",
+                "score": "-849",
+                "depth": 18
+              },
+              {
+                "san": "Ke6",
+                "score": "-849",
+                "depth": 18
+              },
+              {
+                "san": "Kc6",
+                "score": "-849",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "-867",
+            "tablebase": "loss",
+            "tablebase_line": [
+              [
+                "Kc6",
+                "loss"
+              ],
+              [
+                "Ke5",
+                "loss"
+              ],
+              [
+                "Kd7",
+                "loss"
+              ],
+              [
+                "Kd5",
+                "loss"
+              ]
+            ]
+          }
+        },
+        "B": {
+          "fen": "8/8/3k4/8/3K4/3P4/8/8 w - - 0 1",
+          "opening_moves": "",
+          "line": "Kc4 Kc6 d4 Kd6",
+          "alternative": "",
+          "purpose": "endgame",
+          "validation": {
+            "id": "09.2B",
+            "title": "The side to move changes the result",
+            "fen": "8/8/3k4/8/3K4/3P4/8/8 w - - 0 1",
+            "line": "Kc4 Kc6 d4 Kd6",
+            "bad": "",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Kc4",
+                "score": "0",
+                "depth": 18
+              },
+              {
+                "san": "Ke4",
+                "score": "0",
+                "depth": 18
+              },
+              {
+                "san": "Kc3",
+                "score": "0",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "0",
+            "tablebase": "draw",
+            "tablebase_line": [
+              [
+                "Kc4",
+                "draw"
+              ],
+              [
+                "Kc6",
+                "draw"
+              ],
+              [
+                "d4",
+                "draw"
+              ],
+              [
+                "Kd6",
+                "draw"
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "09.3",
+      "title": "A rook pawn is a special case",
+      "idea": "A rook pawn often draws when the defending king reaches the promotion corner. There is no second side for the attacking king to work around, and stalemate limits attempts to force the defender out.",
+      "facts": [
+        "White's a6-pawn promotes on a8, occupied by Black's king.",
+        "White's king on b6 cannot force Black out of that corner.",
+        "If White plays a7, Black is not checked and has no legal move."
+      ],
+      "explain": [
+        "Kc7 ...Ka7 Kc6 ...Ka8 shows the defender retaining the corner without losing. The exact starting position is a tablebase draw, not a failed search for a hidden winning move.",
+        "The tempting a7 is immediate stalemate: a7 is occupied by the pawn and defended by the king, b7 is controlled by White's king, and b8 is controlled by the pawn. Black is not in check on a8. Waiting moves do not create an extra file around the board's edge."
+      ],
+      "caution": "A non-rook pawn offers different geometry, but stalemate still matters. Do not assume that every king move in a winning position preserves the win.",
+      "questions": [
+        "It is Black to move here. What is Black's only legal move?",
+        "Give White's winning route through promotion after that move.",
+        "If White moved first in this same diagram instead, would Kc7 win?"
+      ],
+      "answers": [
+        "Black must play ...Kb8. The pawn on b6 attacks a7, and White's king controls b7. Unlike the rook-pawn case, this forced exit allows White to promote with correct play.",
+        "After ...Kb8, b7 ...Ka7 Kc7 ...Ka6 b8=Q promotes. Black can choose other replies after the pawn push, but all lose with correct play. The tablebase confirms that this starting position with Black to move is lost for Black.",
+        "No. With White to move, Kc7 would be stalemate: the b6-pawn attacks a7, and the king on c7 controls b7 and b8. In fact the White-to-move version is drawn with best defense. Pawn file and side to move both matter."
+      ],
+      "transfer": "Replace a rook pawn with a b-pawn while preserving a legal position. Before every move, list the defending king's legal squares and whether the pawn gives check.",
+      "recall": [
+        "Why must you read the side-to-move label even in the b-pawn example?",
+        "Black to move must yield with ...Kb8 and loses; White to move cannot force a win and Kc7 is stalemate."
+      ],
+      "positions": {
+        "A": {
+          "fen": "k7/8/PK6/8/8/8/8/8 w - - 0 1",
+          "opening_moves": "",
+          "line": "Kc7 Ka7 Kc6 Ka8",
+          "alternative": "a7",
+          "purpose": "endgame",
+          "validation": {
+            "id": "09.3A",
+            "title": "A rook pawn is a special case",
+            "fen": "k7/8/PK6/8/8/8/8/8 w - - 0 1",
+            "line": "Kc7 Ka7 Kc6 Ka8",
+            "bad": "a7",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Kb5",
+                "score": "0",
+                "depth": 18
+              },
+              {
+                "san": "Kc6",
+                "score": "0",
+                "depth": 18
+              },
+              {
+                "san": "Kc5",
+                "score": "0",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "0",
+            "tablebase": "draw",
+            "tablebase_line": [
+              [
+                "Kc7",
+                "draw"
+              ],
+              [
+                "Ka7",
+                "draw"
+              ],
+              [
+                "Kc6",
+                "draw"
+              ],
+              [
+                "Ka8",
+                "draw"
+              ]
+            ]
+          }
+        },
+        "B": {
+          "fen": "k7/8/1PK5/8/8/8/8/8 b - - 0 1",
+          "opening_moves": "",
+          "line": "Kb8 b7 Ka7 Kc7 Ka6 b8=Q",
+          "alternative": "",
+          "purpose": "endgame",
+          "validation": {
+            "id": "09.3B",
+            "title": "A rook pawn is a special case",
+            "fen": "k7/8/1PK5/8/8/8/8/8 b - - 0 1",
+            "line": "Kb8 b7 Ka7 Kc7 Ka6 b8=Q",
+            "bad": "",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Kb8",
+                "score": "#-5",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "#-5",
+            "tablebase": "loss",
+            "tablebase_line": [
+              [
+                "Kb8",
+                "loss"
+              ],
+              [
+                "b7",
+                "loss"
+              ],
+              [
+                "Ka7",
+                "loss"
+              ],
+              [
+                "Kc7",
+                "loss"
+              ],
+              [
+                "Ka6",
+                "loss"
+              ],
+              [
+                "b8=Q",
+                "loss"
+              ]
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

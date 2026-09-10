@@ -1,0 +1,71 @@
+[Event "King and Pawn Decisions / 09.1A"]
+[Site "Original teaching position"]
+[Date "2026.09.10"]
+[Round "09.1"]
+[White "White"]
+[Black "Black"]
+[Result "*"]
+[FEN "8/8/3k4/8/4K3/4P3/8/8 w - - 0 1"]
+[SetUp "1"]
+
+{ In a king-and-pawn ending, king placement can be more valuable than a pawn tempo. Key squares tell you where the king needs to stand to force promotion against correct defense. } 1. Kf5 ( 1. Kf5 { Alternative for comparison; read the explanation before treating it as a recommendation. } 1... Ke7 2. e4 ) 1... Ke7 2. Ke5 { Illustrative line. Kf5 reaches a winning king position. After the sample ...Ke7, Ke5 keeps the king in front of the pawn and takes the opposition. The exact starting position and this continuation are tablebase wins for White. Do not immediately play e4 after ...Ke7. That move uses a pawn tempo before the king has secured the next stage; Black can hold the resulting position. The king must continue doing the work instead of assuming that reaching one key square makes every later pawn push safe. } *
+
+[Event "King and Pawn Decisions / 09.1B"]
+[Site "Original teaching position"]
+[Date "2026.09.10"]
+[Round "09.1"]
+[White "White"]
+[Black "Black"]
+[Result "*"]
+[FEN "8/8/4k3/8/4K3/4P3/8/8 w - - 0 1"]
+[SetUp "1"]
+
+{ Exercise. Try the questions in the book before reading this line. } 1. Kd4 Kd6 2. e4 Ke6 { Illustrative line. Black's king is now on e6. It controls d5, e5 and f5, so White cannot move directly onto any of the e3-pawn's key squares. No. With White to move this is a tablebase draw against correct defense. White can still try, but a plan must not promise a forced promotion that the position does not contain. Black stays in front of the pawn and responds to White's king and pawn moves without allowing penetration. The sample line remains drawn at every step. The exercise tests recognition of a defensive resource, not the search for a nonexistent winning move. } *
+
+[Event "King and Pawn Decisions / 09.2A"]
+[Site "Original teaching position"]
+[Date "2026.09.10"]
+[Round "09.2"]
+[White "White"]
+[Black "Black"]
+[Result "*"]
+[FEN "8/8/3k4/8/3K4/3P4/8/8 b - - 0 1"]
+[SetUp "1"]
+
+{ Opposition is a way to control access, not a magic label. With kings facing each other one square apart, the player forced to move may have to yield a route around the other king. } 1... Kc6 ( 1... Kc6 { Alternative for comparison; read the explanation before treating it as a recommendation. } 2. Ke5 Kd7 3. d4 ) 2. Ke5 Kd7 3. Kd5 { Illustrative line. Black must yield ground. After ...Kc6, Ke5 reaches a key square for the d3-pawn. Following ...Kd7, Kd5 keeps the king in front and preserves the win. Do not replace Kd5 with an automatic d4 push. In that exact position, d4 gives up the win and allows a draw. Opposition helps the king gain access; you still have to choose moves that keep the access useful as the pawn advances. } *
+
+[Event "King and Pawn Decisions / 09.2B"]
+[Site "Original teaching position"]
+[Date "2026.09.10"]
+[Round "09.2"]
+[White "White"]
+[Black "Black"]
+[Result "*"]
+[FEN "8/8/3k4/8/3K4/3P4/8/8 w - - 0 1"]
+[SetUp "1"]
+
+{ Exercise. Try the questions in the book before reading this line. } 1. Kc4 Kc6 2. d4 Kd6 { Illustrative line. The pieces occupy exactly the same squares, but White moves first. The side-to-move label is part of the position, not a minor caption. This version is a draw. In Model A, Black to move loses; here White must move away from the favorable king opposition and cannot force penetration. ...Kc6 keeps Black in front of White's king. After d4, ...Kd6 holds the blockading relationship. The listed line stays drawn. Learn the route and the move order instead of memorizing a picture without its turn. } *
+
+[Event "King and Pawn Decisions / 09.3A"]
+[Site "Original teaching position"]
+[Date "2026.09.10"]
+[Round "09.3"]
+[White "White"]
+[Black "Black"]
+[Result "*"]
+[FEN "k7/8/PK6/8/8/8/8/8 w - - 0 1"]
+[SetUp "1"]
+
+{ A rook pawn often draws when the defending king reaches the promotion corner. There is no second side for the attacking king to work around, and stalemate limits attempts to force the defender out. } 1. Kc7 ( 1. a7 { Alternative for comparison; read the explanation before treating it as a recommendation. } ) 1... Ka7 2. Kc6 Ka8 { Illustrative line. Kc7 ...Ka7 Kc6 ...Ka8 shows the defender retaining the corner without losing. The exact starting position is a tablebase draw, not a failed search for a hidden winning move. The tempting a7 is immediate stalemate: a7 is occupied by the pawn and defended by the king, b7 is controlled by White's king, and b8 is controlled by the pawn. Black is not in check on a8. Waiting moves do not create an extra file around the board's edge. } *
+
+[Event "King and Pawn Decisions / 09.3B"]
+[Site "Original teaching position"]
+[Date "2026.09.10"]
+[Round "09.3"]
+[White "White"]
+[Black "Black"]
+[Result "*"]
+[FEN "k7/8/1PK5/8/8/8/8/8 b - - 0 1"]
+[SetUp "1"]
+
+{ Exercise. Try the questions in the book before reading this line. } 1... Kb8 2. b7 Ka7 3. Kc7 Ka6 4. b8=Q { Illustrative line. Black must play ...Kb8. The pawn on b6 attacks a7, and White's king controls b7. Unlike the rook-pawn case, this forced exit allows White to promote with correct play. After ...Kb8, b7 ...Ka7 Kc7 ...Ka6 b8=Q promotes. Black can choose other replies after the pawn push, but all lose with correct play. The tablebase confirms that this starting position with Black to move is lost for Black. No. With White to move, Kc7 would be stalemate: the b6-pawn attacks a7, and the king on c7 controls b7 and b8. In fact the White-to-move version is drawn with best defense. Pawn file and side to move both matter. } *
